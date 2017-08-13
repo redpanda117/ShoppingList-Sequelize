@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="assets/css/list_style.css">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+    
+        <!--area where the picture will go -->
+        <img src="assets/img/shoppingCart.jpg" alt="picture of a shopping cart fill with food"  class="center-block">
+        
+    </div>
+    <div class="row">
+        <h2>Shopping List</h2>
+    </div>
+
+    <div class="row">
+        <!--area where the items that need to shop for will go-->
+        <div class="col-md-6 pagination-centered" >
+            <h3>Need to Buy</h3>
+            
+            <ul>
+
+                <li>
+                    <p>
+                        <button type="submit" class="btn btn-success">✓</button>
+                        Hello
+                        <input type="hidden" name="got" value="true">
+                    </p>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="col-md-6 pagination-centered">
+            <h3>Got</h3>
+
+        </div>
+        
+    </div>
+    
+    <div class="row">
+        <div class = "col-md-12 pagination-centered">
+        <form class="create-update-form" action="/" method="POST">
+            <div class="form-group">
+                <label>Item Name:</label>
+                <input type="text" name="name">
+            </div>
+            <button type="submit" class="btn btn-primary">Add to Shopping List</button>
+        </form>
+        </div>
+    </div>
+    </div>
+</body>
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</html>

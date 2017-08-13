@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <!--area where the picture will go -->
+        <img src="/assets/img/shoppingCart.jpg" alt="picture of a shopping cart fill with food" class="center-block">
+    </div>
+
+    <div class="row">
+
+        <h2>Shopping List</h2>
+    </div>
+
+    <div class="row">
+        <!--area where the items that need to shop for will go-->
+        <div class="col-md-6 pagination-centered">
+            <h3>Need to Buy</h3>
+            <ul>
+                {{#each items}} {{#unless this.got}}
+                <li>
+                    <h3>
+
+                        <form action="/{{this.id}}?_method=PUT" method="POST">
+                            
+                            <button type="submit" class="btn btn-success">✓</button>
+
+                            {{this.id}}.{{this.item_name}}
+                            <input type="hidden" name="got" value="true">
+
+                        </form>
+                    </h3>
+                </li>
+                {{/unless}} {{/each}}
+            </ul>
+        </div>
+
+        <div class="col-md-6 pagination-centered">
+            <h3>Got</h3>
+            <ul>
+                {{#each items}} {{#if this.got}}
+                <li>
+                    <h3>{{this.id}}.{{this.item_name}}</h3>
+                </li>
+                {{/if}} {{/each}}
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 pagination-centered">
+            <form class="create-update-form" action="/" method="POST">
+                <div class="form-group">
+                    <label>Item Name:</label>
+                    <input type="text" name="name" id="itemInput">
+                </div>
+                <button type="submit" class="btn btn-primary">Add to Shopping List</button>
+            </form>
+        </div>
+    </div>
+</div>
