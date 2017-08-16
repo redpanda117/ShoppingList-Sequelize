@@ -16,7 +16,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 //the css and image
 app.use(express.static(path.join(__dirname, "/public")));
-//app.use("/assets", express.static(path.join(__dirname, "public/assets")));
+
 
 //favicon 
 //app.use(express.static("favicon.ico"));
@@ -30,10 +30,12 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");                       
                        
 // Import routes and give the server access to them.
-//var routes = require("./controllers/item_controller.js");
-//app.use("/", routes);
+var routes = require("./controllers/item_controller.js");
+app.use("/", routes);
 
-db.sequelize.sync().then(function(){
+//require("./routes/api-routes.js")(app);
+
+db.sequelize.sync({}).then(function(){
     app.listen(PORT,function(){
         console.log("Listening on port %s", PORT);
     });
