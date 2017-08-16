@@ -33,7 +33,6 @@ app.set("view engine", "handlebars");
 var routes = require("./controllers/item_controller.js");
 app.use("/", routes);
 
-//require("./routes/api-routes.js")(app);
 
 db.sequelize.sync({}).then(function(){
     app.listen(PORT,function(){

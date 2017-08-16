@@ -1,37 +1,34 @@
 var express = require('express');
 var router = express.Router();
-var ShoppingList = require('../models/')["ShoppingList"];
+var db = require('../models/');
 
 
 // Create all our routes and set up logic within those routes where required.
 
 router.get("/", function(req, res) {
- 
-	ShoppingList.findAll({})
+  	db.ShoppingList.findAll({})
 	.then(function(dbShoppingList){
-		res.render('index', {dbShoppingList})
+		res.render('index', dbShoppingList)
         
 	})
-});
-    /* list.selectAll(function(data) {
+    /*list.selectAll(function(data) {
     var hbsObject = {
       items: data
     };
     console.log(hbsObject);
     res.render("index", hbsObject);
-  });
-});*/
+  });*/
+});
 
 router.post("/", function(req, res) {
-      // Add sequelize code for creating a post using req.body,
-    // then return the result using res.json
-	ShoppingList.create({item_name: req.body.item_name})
-	.then(function(dbShoppingList){
-		console.log(dbShoppingList);
+ 	db.ShoppingList.create({item_name: req.body.item_name})
+	.then(function(newItem){
+		console.log(newItem);
 		res.redirect('/');
 	});
-}); 
-    /*list.insertOne([
+});
+    
+/* list.insertOne([
     "item_name", "got"
   ], [
     req.body.name, false
@@ -41,7 +38,20 @@ router.post("/", function(req, res) {
 });*/
 
 router.put("/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+    var updateList = {
+          got: true,
+      }
+      db.ShoppingList.update(updatePost,{
+          where:{
+              id: req.body.id
+          }
+      }).then(function (dbUpdate){
+          res.json(dbUpdate);
+      })
+  });
+    
+    
+/*var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
 
@@ -50,7 +60,7 @@ router.put("/:id", function(req, res) {
   }, condition, function() {
     res.redirect("/");
   });
-});
+});*/
 
 
 // Export routes for server.js to use.
