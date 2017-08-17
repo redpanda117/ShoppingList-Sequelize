@@ -8,7 +8,8 @@ var db = require('../models/');
 router.get("/", function(req, res) {
   	db.ShoppingList.findAll({})
 	.then(function(dbShoppingList){
-		res.render('index', dbShoppingList)
+        console.log("router.get:", dbShoppingList);
+		res.render('index', {items: dbShoppingList});
         
 	})
     /*list.selectAll(function(data) {
@@ -41,7 +42,7 @@ router.put("/:id", function(req, res) {
     var updateList = {
           got: true,
       }
-      db.ShoppingList.update(updatePost,{
+      db.ShoppingList.update(updateList,{
           where:{
               id: req.body.id
           }
