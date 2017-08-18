@@ -40,14 +40,15 @@ router.post("/", function(req, res) {
 
 router.put("/:id", function(req, res) {
     var updateList = {
-          got: true,
+          got: req.body.got
       }
       db.ShoppingList.update(updateList,{
           where:{
-              id: req.body.id
+              id: req.params.id
           }
       }).then(function (dbUpdate){
-          res.json(dbUpdate);
+          console.log(dbUpdate);
+         res.redirect("/");
       })
   });
     
